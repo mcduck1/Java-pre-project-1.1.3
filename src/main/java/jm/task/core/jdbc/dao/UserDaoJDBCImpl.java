@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    Connection connection = Util.getConnection();
+    private Connection connection = Util.getConnection();
+
     public void createUsersTable() {
         String sql = "CREATE TABLE IF NOT EXISTS users (Id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), lastname VARCHAR(45), age TINYINT)";
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
             statement.executeUpdate(sql);
             connection.commit();
@@ -81,7 +82,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM users";
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -106,7 +107,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         String sql = "TRUNCATE TABLE users";
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
             statement.executeUpdate(sql);
             connection.commit();
