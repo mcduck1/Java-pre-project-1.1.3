@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    Session session = Util.getSessionFactory().openSession();
+    private Session session = Util.getSessionFactory().openSession();
 
     @Override
     public void createUsersTable() {
