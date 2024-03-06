@@ -11,6 +11,10 @@ import java.util.Properties;
 
 public class Util {
     private static SessionFactory sessionFactory;
+    private static final String DB_URL = "jdbc:mysql://localhost/mydbtest";
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "root";
+    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -37,12 +41,6 @@ public class Util {
         }
         return sessionFactory;
     }
-
-    private static final String DB_URL = "jdbc:mysql://localhost/mydbtest";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "root";
-    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-
     public static Connection getConnection () {
         Connection connection = null;
         try {
